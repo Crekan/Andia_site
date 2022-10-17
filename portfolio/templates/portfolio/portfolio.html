@@ -1,0 +1,67 @@
+{% extends 'slider/base.html' %}
+{% load static %}
+
+{% block title %}Portfolio{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <i class="icon-camera page-title-icon"></i>
+                    <h2>Portfolio /</h2>
+                    <p>Here is the work we've done so far</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="portfolio portfolio-page container">
+        <div class="row">
+            <div class="portfolio-navigator span12" style="text-align: left">
+                {% if cat_selected == 0 %}
+                    <h4 style="font-size: 16px; display:inline-block;"><a class="fil" href=""><h4>All / </h4></a></h4>
+                {% else %}
+                    <h4 style="font-size: 16px; display:inline-block;"><a class="all" href="{% url 'portfolio' %}"><h4>All / </h4></a></h4>
+                {% endif %}
+
+                {% for c in cats %}
+                    {% if c.pk == cat_selected %}
+                        <h4 style="font-size: 16px; display:inline-block;">{{ c.categories_name }} /</h4>
+                    {% else %}
+                        <h4 style="font-size: 16px; display:inline-block;"><a class="all" id="active-imgs" href="{{ c.get_absolute_url }}"><h4>{{ c.categories_name }} / </h4></a></h4>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="row">
+            <ul class="portfolio-img">
+                {% for port in portfolio_list %}
+                    <li data-id="p-1" data-type="web-design" class="span3">
+                        <div class="work">
+                            <a href="{{ port.portfolio_img.url }}" rel="prettyPhoto">
+                                <img src="{{ port.portfolio_img.url }}" alt="">
+                            </a>
+                            <h4>{{ port.portfolio_title }}</h4>
+                            <p>{{ port.portfolio_description }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
