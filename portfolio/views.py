@@ -12,8 +12,8 @@ from .models import *
 #
 #     def get_queryset(self):
 #         return PortfolioModel.objects.all()
-
-
+#
+#
 # class PortfolioCategorise(ListView):
 #     model = PortfolioModel
 #     template_name = 'portfolio/portfolio.html'
@@ -21,7 +21,7 @@ from .models import *
 #     allow_empty = False
 #
 #     def get_queryset(self):
-#         return PortfolioModel.objects.filter(cat__slug=self.kwargs['cat_slug'])
+#         return PortfolioModel.objects.filter(cat_id=self.kwargs['cat_id'])
 
 def portfolio(request):
     cats = Categories.objects.all()
@@ -47,5 +47,3 @@ def show_categories(request, cat_id):
     }
 
     return render(request, 'portfolio/portfolio.html', context)
-
-    # return HttpResponse(f'<h1><Test id =  {cat_id}/h1>')
