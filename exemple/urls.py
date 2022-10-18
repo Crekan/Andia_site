@@ -10,7 +10,7 @@ urlpatterns = [
     path('', include('portfolio.urls')),
     path('', include('blog.urls')),
     path('', include('services.urls')),
-
+    path('', include('about.urls')),
 
     path('__debug__/', include('debug_toolbar.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
