@@ -1,7 +1,9 @@
+from django.views.decorators.cache import cache_page
 from django.shortcuts import render
 from .models import *
 
 
+@cache_page(60 * 15)
 def index(request):
     sliders = SliderModel.objects.all()
     cards = CardsBenefitsModel.objects.all()
